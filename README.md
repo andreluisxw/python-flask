@@ -8,7 +8,7 @@ Cada pasta representa uma aula com conteúdos específicos!
 ## 📂 Organização do Repositório
 
 ```
-/Programacao_web/
+/python-flask/
 ├── aula1/   # Introdução ao Flask
 │   ├── app.py
 │   ├── templates/
@@ -46,9 +46,9 @@ git clone https://github.com/omatheusfaria/python-flask.git
 ### 2. 📂 Escolha a aula que deseja rodar
 
 ```bash
-cd Programacao_web/aula1  # Para a aula 1
+cd python-flask/aula1  # Para a aula 1
 # ou
-cd Programacao_web/aula2  # Para a aula 2
+cd python-flask/aula2  # Para a aula 2
 ```
 
 ---
@@ -117,7 +117,7 @@ deactivate
 
 ## 💻 Tecnologias Utilizadas
 
-- 🐍 **Python 3.x**
+- 🐍 **Python 3.12.9**
 - 🔥 **Flask**
 - 🎨 **HTML5 e CSS3** (para templates e estilos)
 
