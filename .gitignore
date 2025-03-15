@@ -2,6 +2,9 @@
 venv/
 .venv/
 
+# Ignorar qualquer pasta env/ em qualquer lugar do projeto
+**/env/
+
 # Ignorar dependências instaladas via pip (caso de dump acidental)
 *.egg-info/
 dist/
