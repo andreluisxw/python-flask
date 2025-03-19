@@ -13,4 +13,12 @@ def calcIMC():
     imc = peso / (altura * altura)
     return render_template('imc_calc.html', res_imc = imc)
 
+@app.route('/calcular_imc_get', methods=['GET'])
+def calcIMC_get():
+    args = request.args
+    altura = float(args.get('txt_altura'))
+    peso = float(args.get('txt_peso'))
+    imc = peso / (altura * altura)
+    return render_template('imc_calc.html', res_imc = imc)
+
 app.run()
