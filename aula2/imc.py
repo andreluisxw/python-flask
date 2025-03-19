@@ -19,6 +19,7 @@ def calcIMC_get():
     altura = float(args.get('txt_altura'))
     peso = float(args.get('txt_peso'))
     imc = peso / (altura * altura)
-    return render_template('imc_calc.html', res_imc = imc)
-
+    if (imc < 18.5):
+        classificacao = 'Magreza'
+    return render_template('imc_calc.html', res_imc = imc, ' ', res_cla = classificacao)
 app.run()
