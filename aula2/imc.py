@@ -21,5 +21,14 @@ def calcIMC_get():
     imc = peso / (altura * altura)
     if (imc < 18.5):
         classificacao = 'Magreza'
-    return render_template('imc_calc.html', res_imc = imc, ' ', res_cla = classificacao)
+    elif (imc >= 18.5 and imc <= 24.9):
+        classificacao = 'Normal'
+    elif (imc >= 25 and imc <= 29.9):
+        classificacao = 'Sobrepeso'
+    elif (imc >= 30 and imc <= 39.9):
+        classificacao = 'Obesidade'
+    else:
+        classificacao = 'Obesidade grave'
+    
+    return render_template('imc_calc.html', res_imc = imc)
 app.run()
