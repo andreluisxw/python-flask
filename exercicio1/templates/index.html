@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificador de Triângulo</title>
+</head>
+<body>
+    <h1>Verificador de Triângulo</h1>
+    <label for="lado_a">Lado A:</label>
+    <input type="number" id="lado_a"><br><br>
+
+    <label for="lado_b">Lado B:</label>
+    <input type="number" id="lado_b"><br><br>
+
+    <label for="lado_c">Lado C:</label>
+    <input type="number" id="lado_c"><br><br>
+
+    <button onclick="verificarTriangulo()">Verificar Triângulo</button>
+
+    <p id="resultado"></p>
+    <img id="imagem_triangulo" src="" alt="Imagem do triângulo" style="display: none;">
+
+    <script>
+        function verificarTriangulo() {
+            var ladoA = document.getElementById("lado_a").value;
+            var ladoB = document.getElementById("lado_b").value;
+            var ladoC = document.getElementById("lado_c").value;
+
+            fetch('/triangulo', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    lado_a: parseFloat(ladoA),
+                    lado_b: parseFloat(ladoB),
+                    lado_c: parseFloat(ladoC)
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("resultado").textContent = "O triângulo é " + data.tipo;
+                document.getElementById("imagem_triangulo").src = "/static/" + data.imagem; // Caminho correto
+                document.getElementById("imagem_triangulo").style.display = "block";
+            });
+        }
+    </script>
+</body>
+</html>
