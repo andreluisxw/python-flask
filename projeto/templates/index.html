@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema</title>
+    <link rel="stylesheet" href="../static/bootstrap.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        .card {
+            width: 400px;
+        }
+        #excluir-usuario-form {
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="card p-4 shadow" style="width: 400px;">
+            <h3 class="text-center mb-4">Login do Sistema</h3>
+            <form action="/login" method="POST">
+                <div class="form-group mb-3">
+                    <label for="cpf">CPF do Usuário:</label>
+                    <input type="text" id="cpf" name="cpf" class="form-control" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                {% if senhaErrada %}
+                    <div class="alert alert-danger text-center">
+                        {{ senhaErrada }}
+                    </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary w-100 mb-2">Entrar</button>
+                <a href="/cadastrar" class="btn btn-secondary w-100">Cadastrar Novo Usuário</a>
+            </form>
+
+            <button id="excluir-cadastro-button" class="btn btn-danger w-100 mt-2">Excluir Cadastro</button>
+            <form id="excluir-usuario-form" action="/excluir_usuario" method="get">
+                <div class="form-group mt-4 mb-3">
+                    <label for="user">ID do Usuário para Excluir:</label>
+                    <input type="text" id="user" name="user" class="form-control" placeholder="Digite o ID do usuário a ser excluído" required>
+                </div>
+                <button type="submit" class="btn btn-danger w-100 mb-2">Excluir Usuário</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        const excluirCadastroButton = document.getElementById('excluir-cadastro-button');
+        excluirCadastroButton.addEventListener('click', () => {
+            window.location.href = '/excluir_usuario';  // Agora esta rota mostra o HTML de exclusão
+        });
+    </script>
+    
+</body>
+</html>
